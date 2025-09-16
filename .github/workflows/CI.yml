@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image:$(date +%s)
+
+    - name: Run the Docker container
+      run: |
+        docker run my-image:$(date +%s) --name test-container
+
+    - name: Check container status
+      run: docker ps -a
