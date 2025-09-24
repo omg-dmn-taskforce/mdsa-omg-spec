@@ -5,13 +5,9 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   make \
   git \
-  texlive \
-  latexmk \
+  texlive-full \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
-RUN tlmgr init-usertree
-RUN tlmgr install enumitem everypage svg transparent draftwatermark
 
 # Set working directory
 WORKDIR /app
@@ -20,4 +16,4 @@ WORKDIR /app
 COPY . .
 
 # Default command
-CMD ["make"]
+CMD ["make", "debug"]
