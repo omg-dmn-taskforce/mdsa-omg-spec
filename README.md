@@ -75,7 +75,7 @@ If you open this NOTSET_NOTSET.PDF, you will notice that much of the body is red
 The first thing to do is set up your metadata.
 
 ### Setting up your specification
-The first task towards a working specification is to edit the `_Specification_Setup.tex` file. This file contains the metadata for your specificaiton that will be used to fill in much of the red text you see in the freshly built PDF. Most of this should be self-explanatory even if you are not familiar with LaTeX, and is fully documented within that file. Lines beginning with `%` are comments, and most of this file is simply setting values to be used in the build process. As an example, the first three items you will need to edit are:
+The first task towards a working specification is to edit the `_Specification_Setup.tex` file. This file contains the metadata for your specification that will be used to fill in much of the red text you see in the freshly built PDF. Most of this should be self-explanatory even if you are not familiar with LaTeX, and is fully documented within that file. Lines beginning with `%` are comments, and most of this file is simply setting values to be used in the build process. As an example, the first three items you will need to edit are:
 
 ``` LaTeX
 \setvalue{\specname}{\REPLACEME{Test Spec}}
@@ -135,10 +135,17 @@ Each remaining file is self-documented, and contains instructions on how it shou
 - `A_Annexes`           Annexes A onward, fill this in if you have supplementary annexes.
 
 #### Bibliography
-Note that there *is no section 3 Bibliography*.  LaTeX creates a bibliography for you, automatically, based on what sources you cite from the .bib files, and ensures it is formatted according to OMG requirements.
+Note that there *is no section 3 Bibliography*.  LaTeX creates a bibliography for you, automatically, based on what sources you cite from the `.bib` files, and ensures it is formatted according to OMG requirements.
 
+Citations are created with `\cite{bibkey}` where `bibkey` is the abbreviation for the reference used in the `.bib` file. Several `.bib` files are provided for you in `mdsa-omg-core` including ones for OMG and W3 specifications, and common ISO standards. Refer to these for the needed bibkey.
 
-`specification.bib` is your team's bibliography file, add your non-OMG, non-ISO, non-W3 references here.  For help with creating .bib entries, you can refer to any number of online resources, but we recommend starting with the biblatex documentation at: https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX .
+By default, citations are NON-normative. To make a citation normative, add its bibkey to the provided list in `_Specification_AuthorSettings.tex`, such as:
+
+`\addtocategory{normative}{MOF25, MOF251, UML251, XMI, XMLSchema}`
+
+(Make sure to uncomment that line to activate it.)
+
+`specification.bib` is your team's private bibliography file, add your non-OMG, non-ISO, non-W3 references here.  For help with creating .bib entries, you can refer to any number of online resources, but we recommend starting with the biblatex documentation at: https://www.overleaf.com/learn/latex/Bibliography_management_in_LaTeX .
 
 #### Additional Files
 While this template structure is designed to handle most use cases possible, there is always that one team that breaks things and... I mean innovates. They innovate.
