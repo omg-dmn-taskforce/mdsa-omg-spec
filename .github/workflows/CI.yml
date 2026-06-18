@@ -27,7 +27,3 @@ jobs:
       with:
         name: specification-pdf
         path: output/*.pdf
-
-    - name: Remove container
-      if: always()
-      run: docker rm build-container
