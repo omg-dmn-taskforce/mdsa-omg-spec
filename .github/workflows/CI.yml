@@ -17,7 +17,17 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image:latest
 
     - name: Run the Docker container
-      run: docker run my-image:latest
+      run: docker run --name build-container my-image:latest
 
-    - name: Check container status
-      run: docker ps -a
+    - name: Copy PDF from container
+      run: docker cp build-container:/app/. ./output/
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: specification-pdf
+        path: output/*.pdf
+
+    - name: Remove container
+      if: always()
+      run: docker rm build-container
