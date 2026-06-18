@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   texlive-latex-extra \
   texlive-fonts-recommended \
   texlive-bibtex-extra \
+  texlive-pictures \
   texlive-xetex \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
