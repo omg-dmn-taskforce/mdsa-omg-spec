@@ -23,4 +23,4 @@ WORKDIR /app
 COPY . .
 
 # Default command
-CMD ["make", "debug"]
+CMD ["make"]
