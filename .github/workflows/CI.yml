@@ -21,16 +21,16 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        tags: my-image:latest
+        tags: omg-mdsa-build:latest
         load: true
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
     - name: Run the Docker container
-      run: docker run --name build-container my-image:latest
+      run: docker run --name omg-mdsa-build-container omg-mdsa-build:latest
 
     - name: Copy PDF from container
-      run: docker cp build-container:/app/. ./output/
+      run: docker cp omg-mdsa-build-container:/app/. ./output/
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
